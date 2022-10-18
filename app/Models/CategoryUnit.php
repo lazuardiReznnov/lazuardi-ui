@@ -10,4 +10,14 @@ class CategoryUnit extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function brandModel()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }

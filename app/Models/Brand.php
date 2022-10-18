@@ -20,4 +20,14 @@ class Brand extends Model
             ],
         ];
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function brandModel()
+    {
+        return $this->belongsTo(CategoryUnit::class);
+    }
 }

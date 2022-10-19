@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             CategoryUnitSeeder::class,
             TypeSeeder::class,
+            KaroseriSeeder::class,
+            UnitSeeder::class,
         ]);
     }
 }

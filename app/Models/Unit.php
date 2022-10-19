@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Karoseri extends Model
+class Unit extends Model
 {
     use HasFactory, Sluggable;
+
     protected $guarded = ['id'];
+    protected $with = ['karoseri', 'brandModel'];
 
     public function sluggable(): array
     {
@@ -25,8 +27,13 @@ class Karoseri extends Model
         return 'slug';
     }
 
-    public function unit()
+    public function karoseri()
     {
-        return $this->belongsTo(Unit::class);
+        return $this->hasMany(karoseri::class);
+    }
+
+    public function brandModel()
+    {
+        return $this->hasMany(brandModel::class);
     }
 }

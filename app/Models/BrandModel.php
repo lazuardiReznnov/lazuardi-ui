@@ -37,4 +37,9 @@ class BrandModel extends Model
     {
         return $this->hasMany(Brand::class);
     }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }

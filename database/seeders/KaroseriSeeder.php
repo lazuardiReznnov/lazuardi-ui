@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Karoseri;
 use Illuminate\Database\Seeder;
-use app\Models\Karoseri;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class KaroseriSeeder extends Seeder
 {

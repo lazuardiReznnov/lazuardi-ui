@@ -28,6 +28,6 @@ class Brand extends Model
 
     public function brandModel()
     {
-        return $this->belongsTo(CategoryUnit::class);
+        return $this->HasMany(BrandModel::class);
     }
 }

@@ -30,16 +30,16 @@ class BrandModel extends Model
 
     public function category_unit()
     {
-        return $this->hasMany(CategoryUnit::class);
+        return $this->belongsTo(CategoryUnit::class);
     }
 
     public function brand()
     {
-        return $this->hasMany(Brand::class);
+        return $this->belongsTo(Brand::class);
     }
 
     public function unit()
     {
-        return $this->belongsTo(Unit::class);
+        return $this->hasMany(Unit::class);
     }
 }

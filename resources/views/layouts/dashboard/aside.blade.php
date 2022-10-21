@@ -93,7 +93,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">Unit</a>
+                            <a href="/dashboard/unit" class="nav-link">Unit</a>
                         </li>
                     </ul>
                 </li>

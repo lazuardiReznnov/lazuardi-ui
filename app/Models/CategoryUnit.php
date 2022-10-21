@@ -18,6 +18,6 @@ class CategoryUnit extends Model
 
     public function brandModel()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->hasMany(Brand::class);
     }
 }

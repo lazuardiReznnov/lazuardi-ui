@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUnitController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,16 +25,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
     ->name('home')
     ->middleware('auth');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})
-    ->name('dashboard')
-    ->middleware('auth');
-
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name(
+        'dashboard'
+    );
 
     Route::resource('/dashboard/unit', DashboardUnitController::class);
 });

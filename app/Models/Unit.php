@@ -29,11 +29,11 @@ class Unit extends Model
 
     public function karoseri()
     {
-        return $this->hasMany(karoseri::class);
+        return $this->belongsTo(karoseri::class);
     }
 
     public function brandModel()
     {
-        return $this->hasMany(brandModel::class);
+        return $this->belongsTo(brandModel::class);
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
-use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\StoreUnitRequest;
+use App\Http\Requests\UpdateUnitRequest;
 
-class DashboardUnitController extends Controller
+class UnitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,7 @@ class DashboardUnitController extends Controller
      */
     public function index()
     {
-        return view('.dashboard.unit.index', [
-            'title' => 'UNIT MANAGEMENT',
-            'data' => unit::latest()
-                ->paginate(10)
-                ->withQueryString(),
-        ]);
+        //
     }
 
     /**
@@ -36,10 +31,10 @@ class DashboardUnitController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreUnitRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUnitRequest $request)
     {
         //
     }
@@ -69,11 +64,11 @@ class DashboardUnitController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateUnitRequest  $request
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Unit $unit)
+    public function update(UpdateUnitRequest $request, Unit $unit)
     {
         //
     }

@@ -139,5 +139,10 @@
     <!-- /.card -->
 </section>
 <!-- /.content -->
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+</script>
 
 @endsection

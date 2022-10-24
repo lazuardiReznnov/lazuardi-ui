@@ -78,9 +78,10 @@
 
         <!-- jQuery -->
         <script src="/asset/plugins/jquery/jquery.min.js"></script>
-        <!-- <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script> -->
+        <!-- <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script> -->
+
         <!-- Bootstrap 4 -->
         <!-- <script src="/asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
         <!-- AdminLTE App -->
@@ -95,10 +96,6 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
             crossorigin="anonymous"
-        ></script>
-        <script
-            type="text/javascript"
-            src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.js"
         ></script>
     </body>
 </html>

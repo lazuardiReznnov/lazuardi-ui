@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table text-blue-900 p-3">
+            <table class="table text-blue-900 p-3" id="myTable">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -58,79 +58,8 @@
                     </tr>
                 </thead>
 
-                <tbody class="table-group-divider">
-                    @if($data->count()) @foreach($data as $unit)
-
-                    <tr>
-                        <th scope="row">
-                            {{ ($data->currentpage()-1) * $data->perpage() + $loop->index + 1 }}
-                        </th>
-                        <td>
-                            @if($unit->pic != 0)
-                            <img
-                                width="75"
-                                src="{{ asset('storage/'. $data->pic) }}"
-                                alt=""
-                            />
-                            @else
-                            {{ "-" }}
-                            @endif
-                        </td>
-                        <td>{{ $unit->noreg }}</td>
-                        <td>
-                            {{ $unit->brandModel->brand->name }} ,
-                            {{ $unit->brandModel->name }}
-                        </td>
-
-                        <td>
-                            <a
-                                href="/dashboard/unit/{{ $unit->slug }}"
-                                class="badge text-bg-success"
-                                data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Detail unit"
-                                ><i class="fa-regular fa-eye"></i
-                            ></a>
-                            <a
-                                href="/dashboard/unit/{{ $unit->slug }}/edit"
-                                class="badge text-bg-warning"
-                                data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Edit product"
-                                ><i class="fa-regular fa-pen-to-square"></i
-                            ></a>
-
-                            <form
-                                action="/dashboard/unit/{{ $unit->slug }}"
-                                method="post"
-                                class="d-inline"
-                            >
-                                @method('delete') @csrf
-                                <button
-                                    class="badge bg-danger border-0"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="top"
-                                    title="Hapus product"
-                                    onclick="return confirm('are You sure ??')"
-                                >
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach @else
-                    <tr>
-                        <td colspan="6" class="text-center">Data Not Found</td>
-                    </tr>
-                    @endif
-                </tbody>
-                <caption class="mt-3"></caption>
+                <tbody class="table-group-divider"></tbody>
             </table>
-            <div class="row">
-                <div class="col-md-8">
-                    {{ $data->links() }}
-                </div>
-            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">Footer</div>
@@ -139,10 +68,10 @@
     <!-- /.card -->
 </section>
 <!-- /.content -->
+@push('datatables-unit')
 <script>
     $(document).ready(function () {
         $("#myTable").DataTable();
     });
 </script>
-
-@endsection
+@endpush @endsection

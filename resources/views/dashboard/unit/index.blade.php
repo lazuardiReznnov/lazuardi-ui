@@ -1,5 +1,4 @@
 @extends('layouts.dashboard.main') @section('content')
-
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -50,7 +49,6 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Pic</th>
                         <th scope="col">no. reg</th>
                         <th scope="col">brand/models</th>
 
@@ -71,7 +69,19 @@
 @push('datatables-unit')
 <script>
     $(document).ready(function () {
-        $("#myTable").DataTable();
+        $("#myTable").DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('unit.index') }}",
+            columns: [
+                { data: "DT_RowIndex", name: "DT_RowIndex" },
+                { data: "noreg", name: "noreg" },
+                {
+                    data: "name",
+                    name: "brandModel.brand.name",
+                },
+            ],
+        });
     });
 </script>
 @endpush @endsection

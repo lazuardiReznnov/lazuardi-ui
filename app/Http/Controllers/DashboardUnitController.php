@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BrandModel;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -15,11 +16,17 @@ class DashboardUnitController extends Controller
      */
     public function index()
     {
+        if (request()->ajax()) {
+            $units = Unit::latest();
+            return DataTables::of($units)
+                ->addIndexColumn()
+                ->editColumn('name', function (Unit $unit) {
+                    return $unit->BrandModel->brand->name;
+                })
+                ->make(true);
+        }
         return view('.dashboard.unit.index', [
             'title' => 'UNIT MANAGEMENT',
-            'data' => unit::latest()
-                ->paginate(10)
-                ->withQueryString(),
         ]);
     }
 

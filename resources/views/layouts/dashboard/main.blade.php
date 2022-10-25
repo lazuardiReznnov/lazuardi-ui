@@ -32,7 +32,6 @@
             type="text/css"
             href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.css"
         />
-        @stack('link-datatables')
     </head>
     <body class="hold-transition sidebar-mini">
         <!-- Site wrapper -->
@@ -79,12 +78,11 @@
 
         <!-- jQuery -->
         <script src="/asset/plugins/jquery/jquery.min.js"></script>
+
         <script
-            src="https://code.jquery.com/jquery-3.6.1.min.js"
-            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-            crossorigin="anonymous"
+            type="text/javascript"
+            src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.js"
         ></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
         <!-- <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script> -->
 

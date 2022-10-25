@@ -17,12 +17,19 @@ class DashboardUnitController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $units = Unit::latest();
+            $units = Unit::latest()->get();
             return DataTables::of($units)
                 ->addIndexColumn()
-                ->editColumn('name', function (Unit $unit) {
-                    return $unit->BrandModel->brand->name;
+                ->addColumn('brand', function (Unit $unit) {
+                    return $unit->BrandModel->brand->name .
+                        '-' .
+                        $unit->BrandModel->name;
                 })
+
+                ->addColumn('action', function ($unit) {
+                    return view('dashboard.unit.button')->with('unit', $unit);
+                })
+
                 ->make(true);
         }
         return view('.dashboard.unit.index', [

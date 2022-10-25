@@ -45,18 +45,28 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table text-blue-900 p-3" id="myTable">
+            <!-- <table class="table table-stripped text-blue-900" id="myTable">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">no. reg</th>
                         <th scope="col">brand/models</th>
-
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
 
                 <tbody class="table-group-divider"></tbody>
+            </table> -->
+            <table class="table" id="myTable">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">no. reg</th>
+                        <th scope="col">brand/models</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
             </table>
         </div>
         <!-- /.card-body -->
@@ -77,9 +87,10 @@
                 { data: "DT_RowIndex", name: "DT_RowIndex" },
                 { data: "noreg", name: "noreg" },
                 {
-                    data: "name",
-                    name: "brandModel.brand.name",
+                    data: "brand",
+                    name: "brandModel.name",
                 },
+                { data: "action", name: "action" },
             ],
         });
     });

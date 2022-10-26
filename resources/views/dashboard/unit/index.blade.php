@@ -163,7 +163,6 @@
         $("#form").modal("show");
         $("#brand").on("change", function () {
             $value = $(this).val();
-            console.log($value);
         });
     });
 </script>

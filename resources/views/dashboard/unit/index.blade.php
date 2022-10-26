@@ -45,24 +45,15 @@
             </div>
         </div>
         <div class="card-body">
-            <!-- <table class="table table-stripped text-blue-900" id="myTable">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">no. reg</th>
-                        <th scope="col">brand/models</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-
-                <tbody class="table-group-divider"></tbody>
-            </table> -->
+            <button class="btn btn-primary mb-3" id="tombol-tambah">Add</button>
             <table class="table" id="myTable">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">no. reg</th>
-                        <th scope="col">brand/models</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">models</th>
+                        <th scope="col">Karoseri</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -76,6 +67,42 @@
     <!-- /.card -->
 </section>
 <!-- /.content -->
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="form"
+    tabindex="-1"
+    aria-labelledby="formLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="formLabel">Modal title</h1>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
 @push('datatables-unit')
 <script>
     $(document).ready(function () {
@@ -90,9 +117,22 @@
                     data: "brand",
                     name: "brandModel.name",
                 },
+                {
+                    data: "models",
+                    name: "models.name",
+                },
+                {
+                    data: "type",
+                    name: "karoseri.name",
+                },
+
                 { data: "action", name: "action" },
             ],
         });
+    });
+    $("body").on("click", "#tombol-tambah", function (e) {
+        e.preventDefault();
+        $("#form").modal("show");
     });
 </script>
 @endpush @endsection

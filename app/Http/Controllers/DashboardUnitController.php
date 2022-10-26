@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BrandModel;
+use App\Models\Brand;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -21,11 +22,14 @@ class DashboardUnitController extends Controller
             return DataTables::of($units)
                 ->addIndexColumn()
                 ->addColumn('brand', function (Unit $unit) {
-                    return $unit->BrandModel->brand->name .
-                        '-' .
-                        $unit->BrandModel->name;
+                    return $unit->BrandModel->brand->name;
                 })
-
+                ->addColumn('models', function (Unit $unit) {
+                    return $unit->BrandModel->name;
+                })
+                ->addColumn('type', function (Unit $unit) {
+                    return $unit->karoseri->name;
+                })
                 ->addColumn('action', function ($unit) {
                     return view('dashboard.unit.button')->with('unit', $unit);
                 })

@@ -205,5 +205,12 @@
             });
         });
     });
+
+    // Modal Saat Keadaan Tidak Aktif
+    $("#form").on("hidden.bs.modal", function (e) {
+        $("#brand").val("");
+        $("#category").val("");
+        $("#brandModel").val("");
+    });
 </script>
 @endpush @endsection

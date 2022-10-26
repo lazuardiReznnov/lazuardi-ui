@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BrandModel;
 use App\Models\Brand;
+use App\Models\CategoryUnit;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -39,6 +40,7 @@ class DashboardUnitController extends Controller
         return view('.dashboard.unit.index', [
             'title' => 'UNIT MANAGEMENT',
             'brands' => Brand::all(),
+            'categories' => CategoryUnit::all(),
         ]);
     }
 
@@ -110,6 +112,10 @@ class DashboardUnitController extends Controller
 
     public function getmodel(Request $request)
     {
-        return 'jos';
+        $brandModel = BrandModel::where([
+            ['brand_id', $request->brand],
+            ['category_unit_id', $request->category],
+        ])->get();
+        return response()->json($brandModel);
     }
 }

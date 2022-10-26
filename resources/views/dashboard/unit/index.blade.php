@@ -87,6 +87,24 @@
                 ></button>
             </div>
             <div class="modal-body">
+                <!-- Select category -->
+                <div class="mb-3">
+                    <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        id="category"
+                        name="category_unit"
+                    >
+                        <option selected>Select category</option>
+                        @foreach($categories as $category)
+                        <option value="{{ $category->id }}">
+                            {{ $category->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+                <!-- EndSelect brand -->
+
                 <!-- Select brand -->
                 <div class="mb-3">
                     <select
@@ -97,7 +115,7 @@
                     >
                         <option selected>Select Brand</option>
                         @foreach($brands as $brand)
-                        <option value="{{ $brand->slug }}">
+                        <option value="{{ $brand->id }}">
                             {{ $brand->name }}
                         </option>
                         @endforeach
@@ -162,12 +180,27 @@
         e.preventDefault();
         $("#form").modal("show");
         $("#brand").on("change", function () {
-            $value = $(this).val();
+            $brand = $(this).val();
+            $category = $("#category").val();
             $.ajax({
-                url: "/dashboard/units/getmodel?brand=" + $value + "",
+                url:
+                    "/dashboard/units/getmodel?brand=" +
+                    $brand +
+                    "&category=" +
+                    $category +
+                    "",
                 method: "GET",
                 success: function (data) {
-                    console.log(data);
+                    $("#brandModel").append("<option>---Choice Brand Model---");
+                    $.each(data, function (kode, nama) {
+                        $("#brandModel").append(
+                            '<option value="' +
+                                nama.id +
+                                '">' +
+                                nama.name +
+                                "</option>"
+                        );
+                    });
                 },
             });
         });

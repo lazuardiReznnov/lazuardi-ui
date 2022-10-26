@@ -7,4 +7,9 @@
     alt=""
     width="150"
 />
-@endif
+@endif if (response) { $("#brandModel").empty(); $("brandModel").append( "
+<option>
+    ---Choice Brand Model---" ); $.each(response, function (name, id) {
+    $("#brandModel").append( '<option value"' + // id + // '">' + name + "
+</option>
+" ); }); } else { $("#brandModel").empty(); } },

@@ -31,4 +31,9 @@ Route::middleware('auth')->group(function () {
     );
 
     Route::resource('/dashboard/unit', DashboardUnitController::class);
+
+    route::get('/dashboard/units/getmodel', [
+        DashboardUnitController::class,
+        'getmodel',
+    ]);
 });

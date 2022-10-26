@@ -163,6 +163,13 @@
         $("#form").modal("show");
         $("#brand").on("change", function () {
             $value = $(this).val();
+            $.ajax({
+                url: "/dashboard/units/getmodel?brand=" + $value + "",
+                method: "GET",
+                success: function (data) {
+                    console.log(data);
+                },
+            });
         });
     });
 </script>

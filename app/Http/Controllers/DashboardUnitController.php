@@ -107,4 +107,9 @@ class DashboardUnitController extends Controller
     {
         //
     }
+
+    public function getmodel(Request $request)
+    {
+        return 'jos';
+    }
 }

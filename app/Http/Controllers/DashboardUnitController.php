@@ -38,6 +38,7 @@ class DashboardUnitController extends Controller
         }
         return view('.dashboard.unit.index', [
             'title' => 'UNIT MANAGEMENT',
+            'brands' => Brand::all(),
         ]);
     }
 

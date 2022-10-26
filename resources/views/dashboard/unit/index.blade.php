@@ -86,7 +86,35 @@
                     aria-label="Close"
                 ></button>
             </div>
-            <div class="modal-body">...</div>
+            <div class="modal-body">
+                <!-- Select brand -->
+                <div class="mb-3">
+                    <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        id="brand"
+                        name="brand"
+                    >
+                        <option selected>Select Brand</option>
+                        @foreach($brands as $brand)
+                        <option value="{{ $brand->slug }}">
+                            {{ $brand->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+                <!-- EndSelect brand -->
+                <!-- Select Brand Model -->
+                <div class="mb-3">
+                    <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        id="brandModel"
+                        name="brandModel_id"
+                    ></select>
+                </div>
+                <!-- EndSelect brand -->
+            </div>
             <div class="modal-footer">
                 <button
                     type="button"
@@ -133,6 +161,10 @@
     $("body").on("click", "#tombol-tambah", function (e) {
         e.preventDefault();
         $("#form").modal("show");
+        $("#brand").on("change", function () {
+            $value = $(this).val();
+            console.log($value);
+        });
     });
 </script>
 @endpush @endsection

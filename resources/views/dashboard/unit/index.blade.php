@@ -86,65 +86,67 @@
                     aria-label="Close"
                 ></button>
             </div>
-            <div class="modal-body">
-                <!-- Select category -->
-                <div class="mb-3">
-                    <select
-                        class="form-select"
-                        aria-label="Default select example"
-                        id="category"
-                        name="category_unit"
-                    >
-                        <option selected>Select category</option>
-                        @foreach($categories as $category)
-                        <option value="{{ $category->id }}">
-                            {{ $category->name }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-                <!-- EndSelect brand -->
+            <form id="modalform">
+                <div class="modal-body">
+                    <!-- Select category -->
+                    <div class="mb-3">
+                        <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="category"
+                            name="category_unit"
+                        >
+                            <option selected>Select category</option>
+                            @foreach($categories as $category)
+                            <option value="{{ $category->id }}">
+                                {{ $category->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <!-- EndSelect brand -->
 
-                <!-- Select brand -->
-                <div class="mb-3">
-                    <select
-                        class="form-select"
-                        aria-label="Default select example"
-                        id="brand"
-                        name="brand"
+                    <!-- Select brand -->
+                    <div class="mb-3">
+                        <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="brand"
+                            name="brand"
+                        >
+                            <option selected>Select Brand</option>
+                            @foreach($brands as $brand)
+                            <option value="{{ $brand->id }}">
+                                {{ $brand->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <!-- EndSelect brand -->
+                    <!-- Select Brand Model -->
+                    <div class="mb-3">
+                        <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="brandModel"
+                            name="brandModel_id"
+                        ></select>
+                    </div>
+                    <!-- EndSelect brand -->
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
                     >
-                        <option selected>Select Brand</option>
-                        @foreach($brands as $brand)
-                        <option value="{{ $brand->id }}">
-                            {{ $brand->name }}
-                        </option>
-                        @endforeach
-                    </select>
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        Save changes
+                    </button>
                 </div>
-                <!-- EndSelect brand -->
-                <!-- Select Brand Model -->
-                <div class="mb-3">
-                    <select
-                        class="form-select"
-                        aria-label="Default select example"
-                        id="brandModel"
-                        name="brandModel_id"
-                    ></select>
-                </div>
-                <!-- EndSelect brand -->
-            </div>
-            <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                >
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">
-                    Save changes
-                </button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -208,9 +210,8 @@
 
     // Modal Saat Keadaan Tidak Aktif
     $("#form").on("hidden.bs.modal", function (e) {
-        $("#brand").val("");
-        $("#category").val("");
-        $("#brandModel").val("");
+        $("#modalform").trigger("reset");
+        $("#brandModel").load(window.location.href + " #brandModel");
     });
 </script>
 @endpush @endsection
